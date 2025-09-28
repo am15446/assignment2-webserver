@@ -42,7 +42,7 @@ def webServer(port=13331):
 
       #This variable can store the headers you want to send for any valid or invalid request.   What header should be sent for a response that is ok?    
       #Fill in start 
-      headers = b"HTTP/1.1 200 OK\r\n\r\n" #may or may not need the HTTP part before it?
+      headers = b"HTTP/1.1 200 OK\r\n" #may or may not need the HTTP part before it?
       # print("f")
 
       #Content-Type is an example on how to send a header as bytes. There are more!
@@ -66,8 +66,9 @@ def webServer(port=13331):
       # print("j")
       # print(fileInformation)
       fileInformation = fileInformation.encode()
+      endheader = b"\r\n"
       # print("j.0")
-      finaloutput = headers+outputdata+fileInformation
+      finaloutput = headers+outputdata+endheader+fileInformation
       # Fill in start
       # print("j.1")
       connectionSocket.send(finaloutput)
